@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa"; 
 import "./App.css";
 import SearchBar from "./components/common/search_common/search_bar";
 import UserList from "./components/users/user_list/user_list";
@@ -9,28 +10,46 @@ import UserDetails from "./components/users/user_detail/user_details";
 function App() {
   const [searchUser, setSearchUser] = useState("");
   const [selectedUser, setSelectedUser] = useState<UserModel | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false); 
 
-  //Es la referencia para que vaya a la seccion del detalle del usuario
   const detailsRef = useRef<HTMLDivElement | null>(null);
-  // se utiliza useMemo para evitar re-renderizados cuando no hay cambios en la lista de los usuarios
+
+  // Filtrar usuarios con memoización
   const filteredUsers = useMemo(
     () => filterUsers(usersData, searchUser),
     [searchUser]
   );
 
+  // Cambiar entre tema claro y oscuro
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
+  // Seleccion de usuario con scroll en pantallas pequeñas
   const handleSelectUser = (user: UserModel) => {
     setSelectedUser(user);
-
-    // Aqui realiza el scroll hacia el usuario que selecciono anteriomente
     if (window.innerWidth <= 768 && detailsRef.current) {
       detailsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+   
+      <header className="app-header">
+        <button onClick={toggleTheme} className="theme-toggle">
+          {isDarkMode ? (
+            <FaSun size={24} color="#f9d71c" />
+          ) : (
+            <FaMoon size={24} color="#1e1e1e" />
+          )}
+        </button>
+      </header>
+
       <div
-        className={`content-container ${selectedUser ? "shrinked" : "expanded"}`}
+        className={`content-container ${
+          selectedUser ? "shrinked" : "expanded"
+        }`}
       >
         <SearchBar handleSearch={setSearchUser} />
         {filteredUsers.length === 0 ? (
@@ -39,12 +58,13 @@ function App() {
           <UserList users={filteredUsers} handleSelectUser={handleSelectUser} />
         )}
       </div>
+
       {selectedUser && (
         <div ref={detailsRef} className="details-container">
           <UserDetails user={selectedUser} />
           <button
-            className="close-button"
             onClick={() => setSelectedUser(null)}
+            className="close-button"
           >
             Cerrar
           </button>
