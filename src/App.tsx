@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/common/search_common/search_bar";
 import UserList from "./components/users/user_list/user_list";
@@ -10,10 +10,22 @@ function App() {
   const [searchUser, setSearchUser] = useState("");
   const [selectedUser, setSelectedUser] = useState<UserModel | null>(null);
 
+  //Es la referencia para que vaya a la seccion del detalle del usuario
+  const detailsRef = useRef<HTMLDivElement | null>(null);
+  // se utiliza useMemo para evitar re-renderizados cuando no hay cambios en la lista de los usuarios
   const filteredUsers = useMemo(
     () => filterUsers(usersData, searchUser),
     [searchUser]
   );
+
+  const handleSelectUser = (user: UserModel) => {
+    setSelectedUser(user);
+
+    // Aqui realiza el scroll hacia el usuario que selecciono anteriomente
+    if (window.innerWidth <= 768 && detailsRef.current) {
+      detailsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="app-container">
@@ -24,11 +36,11 @@ function App() {
         {filteredUsers.length === 0 ? (
           <p className="no-users">No se encontraron usuarios</p>
         ) : (
-          <UserList users={filteredUsers} handleSelectUser={setSelectedUser} />
+          <UserList users={filteredUsers} handleSelectUser={handleSelectUser} />
         )}
       </div>
       {selectedUser && (
-        <div className="details-container">
+        <div ref={detailsRef} className="details-container">
           <UserDetails user={selectedUser} />
           <button
             className="close-button"

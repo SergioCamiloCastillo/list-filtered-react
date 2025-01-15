@@ -9,4 +9,5 @@ export const filterUsers = (
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  //realiza la busqueda o el filtro por nombre o email, si coincide alguno, lo mostrara
 };

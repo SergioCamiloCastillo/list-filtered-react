@@ -1,14 +1,6 @@
-.user-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 10px;
-}
-
 .user-card {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -16,6 +8,8 @@
   cursor: pointer;
   transition: box-shadow 0.3s;
   position: relative;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .user-card:hover {
@@ -29,13 +23,13 @@
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 15px;
   border: 2px solid #ddd;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .user-name {
@@ -59,12 +53,29 @@
   margin-right: 8px;
   color: #007bff;
 }
+
+.icon-arrow {
+  font-size: 20px;
+  color: #007bff;
+  margin-left: auto;
+}
+
 .user-card:focus {
   outline: none;
   border: 2px solid #007bff;
 }
 
-.user-card svg {
-  margin-left: 10px; 
-  color: #007bff;
+@media (max-width: 768px) {
+  .icon-arrow {
+    font-size: 16px;
+  }
+
+  .user-photo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .user-card {
+    gap: 10px;
+  }
 }

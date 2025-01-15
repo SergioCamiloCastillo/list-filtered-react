@@ -36,3 +36,9 @@
 .user-details p strong {
   color: #222;
 }
+@media (max-width: 768px) {
+  .user-details {
+    width: auto;
+    margin: 0;
+  }
+}

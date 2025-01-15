@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   gap: 15px;
   transition: all 0.3s ease;
+  margin-bottom: 30px;
 }
 
 .close-button {
@@ -62,6 +63,11 @@ body {
 }
 
 /* Media Queries */
+@media (max-width: 768px) {
+  .content-container.shrinked {
+    max-width: 100%
+  }
+}
 @media (min-width: 768px) {
   .app-container {
     flex-direction: row;

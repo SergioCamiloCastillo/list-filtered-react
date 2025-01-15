@@ -19,6 +19,7 @@ const UserList: React.FC<UserListProps> = ({ users, handleSelectUser }) => {
           role="button"
           tabIndex={0}
           aria-label={`Seleccionar usuario ${user.name}`}
+          //Se usa aria-label para asegurar la accesibilidad para personas con discapacidad visual
         >
           <img
             src={user.urlPhoto}
@@ -33,7 +34,7 @@ const UserList: React.FC<UserListProps> = ({ users, handleSelectUser }) => {
               <FaEnvelope style={{ marginRight: "8px" }} /> {user.email}
             </p>
           </div>
-          <FaChevronRight style={{ fontSize: "20px", color: "#007bff", marginLeft: "auto" }} />
+          <FaChevronRight className="icon-arrow" />
         </div>
       ))}
     </div>

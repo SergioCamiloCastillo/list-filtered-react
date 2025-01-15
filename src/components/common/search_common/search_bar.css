@@ -52,3 +52,8 @@
   .clear-icon:hover {
     color: #007bff;
   }
+  @media (max-width: 768px) {
+    .search-bar-input {
+      width: 90%;
+    }
+  }

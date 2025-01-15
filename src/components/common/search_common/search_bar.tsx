@@ -38,6 +38,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
             onClick={handleClear}
             role="button"
             aria-label="Limpiar búsqueda"
+            //Se usa aria-label para asegurar la accesibilidad para personas con discapacidad visual
           />
         )}
       </div>
