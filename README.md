@@ -14,3 +14,9 @@ En la parte de accesibilidad, de uso la propiedad "aria-label", en diferentes el
 
 ## Proyecto escalable
 En el momento que hayan listas mas grandes, se podria crear una paginación, que divida la lista de usuarios en varias páginas, reduciendo la carga inicial y mejora en el rendimiento de la aplicación, junto con esto, implemementar lazy loading en las imagenes de los usuarios, mejorando la velocidad en la carga. En el filtro se podria usar un debouncer, que nos ayude a evitar hacer demasiadas peticiones cuando se ingrese algun valor en el input de busqueda. Si se usa alguna API, junto con la paginación, se podria traer los datos de manera dinámica, para que no traiga todos los usuarios, si no se necesitan renderizar.
+
+## Instalación
+Cuando abra el proyecto en la raiz, ejecute los siguientes comandos:
+
+* npm install
+* npm run dev
