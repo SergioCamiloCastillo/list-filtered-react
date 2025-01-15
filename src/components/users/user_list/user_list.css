@@ -1,0 +1,70 @@
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  position: relative;
+}
+
+.user-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+}
+
+.user-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 2px solid #ddd;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #555;
+  margin: 2px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.user-name svg,
+.user-email svg {
+  margin-right: 8px;
+  color: #007bff;
+}
+.user-card:focus {
+  outline: none;
+  border: 2px solid #007bff;
+}
+
+.user-card svg {
+  margin-left: 10px; 
+  color: #007bff;
+}
